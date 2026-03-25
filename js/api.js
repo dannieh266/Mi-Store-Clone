@@ -1,5 +1,5 @@
 // 全局的前缀
-var BASE_URL = "http://www.codeedu.com.cn"
+var BASE_URL = "https://www.codeedu.com.cn"
 function baseAjax(type, url, data, callback,isToken) {
     var contentType = type == "GET" ? "application/x-www-form-urlencoded" : "application/json"
     // 判断token
