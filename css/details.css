@@ -1,0 +1,272 @@
+/* 购买成功 */
+.buy-box {
+    display: none;
+    transition: .2s;
+}
+
+.shadow {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 4;
+}
+
+.box {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 300px;
+    text-align: center;
+    width: 660px;
+    height: 130px;
+    background-color: white;
+    z-index: 5;
+    padding: 22px;
+}
+
+.box div:nth-child(1) {
+    font-size: 18px;
+    margin-bottom: 56px;
+}
+
+.box div:nth-child(2) {
+    font-size: 14px;
+    width: 160px;
+    height: 42px;
+    line-height: 42px;
+    background-color: rgba(255, 103, 0, 1);
+    color: white;
+    margin: auto;
+}
+
+
+/* 基本信息 */
+.basic-info-container {
+    width: 100%;
+    height: 62px;
+    background-color: white;
+    box-shadow: 0px 4px 10px rgba(147.69, 147.69, 147.69, 0.25);
+}
+
+.basic-info {
+    line-height: 62px;
+    font-size: 18px;
+}
+
+.product-other span {
+    margin-left: 20px;
+}
+
+/* 详细信息 */
+.product-detail-container {
+    width: 100%;
+    height: 521px;
+    background-color: white;
+    margin-top: 34px;
+}
+
+.product-img {
+    width: 520px;
+    position: relative;
+    overflow: hidden;
+}
+
+.product-img:hover .arrow-left {
+    background-color: rgba(152, 152, 152, 0.52);
+    transform: translateX(100%);
+}
+
+.product-img:hover .arrow-right {
+    background-color: rgba(152, 152, 152, 0.52);
+    transform: translateX(-100%);
+}
+
+.product-img img {
+    width: 520px;
+    height: 518px;
+    object-fit: cover;
+}
+
+.banner-img{
+    transition: .3s;
+}
+/* .dot div {
+    width: 30px;
+    height: 2px;
+    background-color: #dcdfe6;
+}
+
+.dot div:nth-child(n+2) {
+    margin-left: 8px;
+}
+
+.dot-active {
+    background-color: #b0b0b0 !important;
+} */
+
+.dot {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0px;
+    margin: auto;
+    height: 11px;
+}
+
+.dot-item {
+    width: 32px;
+    height: 26px;
+    border-top: 4px solid rgba(220, 223, 230, 1);
+    margin-right: 10px;
+}
+.dot-item:hover {
+    border-top: 4px solid rgba(176, 176, 176, 1) !important;
+}
+
+.dot-active {
+    width: 32px;
+    height: 26px;
+    border-top: 4px solid rgba(176, 176, 176, 1);
+}
+
+.arrow-left,
+.arrow-right {
+    position: absolute;
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(152, 152, 152, 0.2);
+    color: white;
+    border-radius: 50%;
+    font-size: 14px;
+    text-align: center;
+    line-height: 36px;
+    transition: .5s;
+    cursor: pointer;
+}
+
+.arrow-left {
+    left: 0px;
+    transform: translateX(-100%);
+}
+
+.arrow-right {
+    right: 0px;
+    transform: translateX(100%);
+}
+
+
+
+
+
+.product-detail-info {
+    width: 642px;
+}
+
+.above {
+    border-bottom: 1px solid #E0E0E0;
+}
+
+.name {
+    font-size: 24px;
+}
+
+.detail {
+    font-size: 16px;
+    color: #B0B0B0;
+    margin-top: 12px;
+}
+
+.shop {
+    margin-top: 12px;
+    font-size: 16px;
+    color: #FF6700;
+}
+
+.price {
+    margin: 15px auto 15px;
+}
+
+.price span:first-child {
+    font-size: 18px;
+    color: #FF6700;
+    margin-right: 6px;
+}
+
+.price span:nth-child(2) {
+    font-size: 14px;
+    color: #B0B0B0;
+    text-decoration: line-through;
+}
+
+.below {
+    margin-top: 45px;
+}
+
+.order {
+    width: 642px;
+    height: 136px;
+    background-color: rgba(249, 249, 250, 1);
+    box-sizing: border-box;
+    padding: 34px 60px 30px;
+}
+
+.line-one{
+    font-size: 16px;
+    color: #606266;
+}
+
+.order-price span:nth-child(2) {
+    text-decoration: line-through;
+}
+
+.line-two {
+    font-size: 24px;
+    color: #FF6700;
+    margin-top: 20px;
+}
+
+.button-buy {
+    background: #FF6700;
+    color: white;
+    line-height: 56px;
+    text-align: center;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 340px;
+    height: 56px;
+    margin-top: 54px;
+    cursor: pointer;
+}
+
+.button-buy:hover {
+    background-color: rgba(231, 93, 0, 1);
+}
+
+.order-service {
+    margin-top: 22px;
+}
+
+.service-item:nth-child(n+2) {
+    margin-left: 22px;
+}
+
+.service-item div {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid rgba(176, 176, 176, 1);
+    background-image: url('../img/success.png');
+    background-size: 8px 8px;
+    background-repeat: no-repeat;
+    background-position: 3px 3px;
+    margin-right: 6px;
+}
+
+.service-item span {
+    font-size: 16px;
+    color: #B0B0B0;
+}

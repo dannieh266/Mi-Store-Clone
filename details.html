@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/public.css">
+    <link rel="stylesheet" href="./css/details.css">
+    <script src="./utils/jquery-3.7.1.js"></script>
+    <script src="./utils/jquery.cookie.js"></script>
+    <script src="./utils/tools.js"></script>
+    <script src="./js/api.js"></script>
+    <script src="./js/details.js"></script>
+    <script src="./js/public.js"></script>
+</head>
+
+<body>
+    <!-- 登录 -->
+    <div class="shadow  login-dialog">
+        <div class="form-dialog">
+            <div class="pop-title">
+                <span>登录</span>
+                <span onclick="dialogVisible('.login-dialog',false)"></span>
+            </div>
+            <div class="input-info layout-align-center">
+                <img src="./img/avatar.png" alt="">
+                <input type="text" placeholder="请输入账号" name="account">
+                <!-- 报错时的X符号 -->
+                <div class="err-icon"></div>
+                <!-- 报错时的提示文字 -->
+                <span class="err-msg"></span>
+            </div>
+            <div class="input-info layout-align-center">
+                <img src="./img/eye.png" alt="">
+                <input type="password" placeholder="请输入密码" name="pwd">
+                <div class="err-icon"></div>
+                <span class="err-msg"></span>
+            </div>
+            <div class="btn" onclick="handleLogin()">登录</div>
+        </div>
+    </div>
+
+    <!-- 注册 -->
+    <div class="shadow  register-dialog">
+        <div class="form-dialog">
+            <div class="pop-title">
+                <span>注册</span>
+                <span onclick="dialogVisible('.register-dialog',false)"></span>
+            </div>
+            <div class="input-info layout-align-center">
+                <img src="./img/avatar.png" alt="">
+                <input type="text" placeholder="请输入账号" name="account">
+                <!-- 报错时的X符号 -->
+                <div class="err-icon"></div>
+                <!-- 报错时的提示文字 -->
+                <span class="err-msg"></span>
+            </div>
+            <div class="input-info layout-align-center">
+                <img src="./img/eye.png" alt="">
+                <input type="password" placeholder="请输入密码" name="pwd">
+                <div class="err-icon"></div>
+                <span class="err-msg"></span>
+            </div>
+            <div class="input-info layout-align-center">
+                <img src="./img/eye.png" alt="">
+                <input type="password" placeholder="请再次输入密码" name="pwdRepeat">
+                <div class="err-icon"></div>
+                <span class="err-msg"></span>
+            </div>
+            <div class="btn" onclick="handleRegister()">注册</div>
+        </div>
+    </div>
+    <div class="buy-box shadow">
+        <div class="box">
+            <div>购买成功</div>
+            <div onclick="buySuccess()">确定</div>
+        </div>
+        <div class="shadow"></div>
+    </div>
+    <div class="details-page">
+        <!-- 头部 -->
+        <div class="topact-container">
+            <div class="topact-content common-content layout-end">
+                <div class="topact-item">
+                    <span onclick="dialogVisible('.login-dialog',true)">登录</span>
+                    |
+                    <span onclick="dialogVisible('.register-dialog',true)">注册</span>
+                </div>
+                <div class="topact-item">我的订单</div>
+                <div class="topact-item">我的收藏</div>
+                <div class="topact-item layout-around-center">
+                    <img src="./img/shopping-cart.png" alt="">
+                    <span>购物车 (0)</span>
+                </div>
+            </div>
+        </div>
+        <!-- 导航栏 -->
+        <div class="nav-container">
+            <div class="nav-content common-content layout-justify-between">
+                <div class="left layout-flex">
+                    <img src="./img/logo.png" alt="">
+                    <div class="nav layout-flex">
+                        <a href="./html/index.html" class="nav-item">首页</a>
+                        <a class="nav-item nav-active">全部商品</a>
+                        <a class="nav-item">关于我们</a>
+                    </div>
+                </div>
+                <div class="right">
+                    <input type="text" placeholder="请输入搜索内容">
+                    <div class="search">
+                        <img src="./img/view.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 基本信息 -->
+        <div class="basic-info-container">
+            <div class="basic-info common-content layout-justify-between">
+                <div class="product-name">Redmi K30</div>
+                <div class="product-other">
+                    <span>概述</span>
+                    <span>参数</span>
+                    <span>用户评价</span>
+                </div>
+            </div>
+        </div>
+        <!-- 详细信息 -->
+        <div class="product-detail-container">
+            <div class="product-detail-content common-content layout-justify-between">
+                <div class="product-img layout-column-center">
+                    <div class="banner-img layout-flex">
+                        <!-- <img src="./img/Rectangle 161.png" alt="">
+                        <img src="./img/Rectangle 161.png" alt="">
+                        <img src="./img/Rectangle 161.png" alt=""> -->
+                    </div>
+                    <div class="dot layout-flex">
+                    </div>
+                    <div class="arrow">
+                        <div class="arrow-left">&lt;</div>
+                        <div class="arrow-right">&gt;</div>
+                    </div>
+                </div>
+                <div class="product-detail-info">
+                    <div class="above">
+                        <!-- <div class="name">Redmi K30</div>
+                        <div class="detail">120Hz高帧率流速屏/ 索尼6400万前后六摄/ 6.67''小孔径全面屏 / 最高可选8GB+256GB大存储/ 高通骁龙730G处理器 /
+                            3D四曲玻璃机身 / 4500mAh+27W快充 / 多功能NFC
+                        </div>
+                        <div class="shop">小米自营</div>
+                        <div class="price">
+                            <span>1599元</span>
+                            <span>2000元</span>
+                        </div> -->
+                    </div>
+                    <div class="below">
+                        <div class="order">
+                            <!-- <div class="line-one layout-justify-between">
+                                <div class="order-name">Redmi K30</div>
+                                <div class="order-price">
+                                    <span>1599元</span>
+                                    <span>2000元</span>
+                                </div>
+                            </div>
+                            <div class="line-two">总计：1599元</div> -->
+                        </div>
+                        <div class="button-buy" onclick="buy()">立即购买</div>
+                        <div class="order-service layout-align-center">
+                            <div class="service-item layout-align-center">
+                                <div></div>
+                                <span>小米自营</span>
+                            </div>
+                            <div class="service-item layout-align-center">
+                                <div></div>
+                                <span>小米发货</span>
+                            </div>
+                            <div class="service-item layout-align-center">
+                                <div></div>
+                                <span>7天无理由退货</span>
+                            </div>
+                            <div class="service-item layout-align-center">
+                                <div></div>
+                                <span>7天价格保护</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- 通用底部 -->
+        <div class="site-footer-container">
+            <div class="site-footer-content">
+                <div class="quality layout-justify-between">
+                    <div class="quality-item layout-align-center">
+                        <img src="./img/安全盾icon.png" alt="">
+                        <span>7天无理由退换货</span>
+                    </div>
+                    <div class="quality-item layout-align-center">
+                        <img src="./img/安全盾icon.png" alt="">
+                        <span>满99元全场免邮</span>
+                    </div>
+                    <div class="quality-item layout-align-center">
+                        <img src="./img/安全盾icon.png" alt="">
+                        <span>100%品质保证</span>
+                    </div>
+                </div>
+                <div class="logo">
+                    <div class="head"></div>
+                    <div class="left-ear"></div>
+                    <div class="right-ear"></div>
+                    <div class="body"></div>
+                    <div class="tail"></div>
+                </div>
+                <div class="page">首页&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;全部商品&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;关于我们
+                </div>
+                <div class="copyright">
+                    <span>商城版权所有 © 2012-2021 </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    $(".dot").on("click", ".dot div",function () {
+            console.log("我进入原点点击事件咯");
+            // curIndex = $(this).index()
+            // bannerMove(curIndex)
+        })
+</script>
+
+</html>

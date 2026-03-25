@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/public.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="./utils/jquery-3.7.1.js"></script>
+    <script src="./utils/jquery.cookie.js"></script>
+    <!-- index依赖于api -->
+    <script src="./js/api.js"></script>
+    <script src="./js/index.js"></script>
+    <script src="./js/public.js"></script>
+
+</head>
+
+<body>
+    <!-- 登录 -->
+    <div class="shadow  login-dialog">
+        <div class="form-dialog">
+            <div class="pop-title">
+                <span>登录</span>
+                <span onclick="dialogVisible('.login-dialog',false)"></span>
+            </div>
+            <div class="input-info layout-align-center">
+                <img src="./img/avatar.png" alt="">
+                <input type="text" placeholder="请输入账号" name="account">
+                <!-- 报错时的X符号 -->
+                <div class="err-icon"></div>
+                <!-- 报错时的提示文字 -->
+                <span class="err-msg"></span>
+            </div>
+            <div class="input-info layout-align-center">
+                <img src="./img/eye.png" alt="">
+                <input type="password" placeholder="请输入密码" name="pwd">
+                <div class="err-icon"></div>
+                <span class="err-msg"></span>
+            </div>
+            <div class="btn" onclick="handleLogin()">登录</div>
+        </div>
+    </div>
+
+    <!-- 注册 -->
+    <div class="shadow  register-dialog">
+        <div class="form-dialog">
+            <div class="pop-title">
+                <span>注册</span>
+                <span onclick="dialogVisible('.register-dialog',false)"></span>
+            </div>
+            <div class="input-info layout-align-center">
+                <img src="./img/avatar.png" alt="">
+                <input type="text" placeholder="请输入账号" name="account">
+                <!-- 报错时的X符号 -->
+                <div class="err-icon"></div>
+                <!-- 报错时的提示文字 -->
+                <span class="err-msg"></span>
+            </div>
+            <div class="input-info layout-align-center">
+                <img src="./img/eye.png" alt="">
+                <input type="password" placeholder="请输入密码" name="pwd">
+                <div class="err-icon"></div>
+                <span class="err-msg"></span>
+            </div>
+            <div class="input-info layout-align-center">
+                <img src="./img/eye.png" alt="">
+                <input type="password" placeholder="请再次输入密码" name="pwdRepeat">
+                <div class="err-icon"></div>
+                <span class="err-msg"></span>
+            </div>
+            <div class="btn" onclick="handleRegister()">注册</div>
+        </div>
+    </div>
+
+
+
+    <div class="index-page">
+        <!-- 头部 -->
+        <div class="topact-container">
+            <div class="topact-content common-content layout-end">
+                <div class="topact-item">
+                    <span onclick="dialogVisible('.login-dialog',true)">登录</span>
+                    |
+                    <span onclick="dialogVisible('.register-dialog',true)">注册</span>
+                </div>
+                <div class="topact-item">我的订单</div>
+                <div class="topact-item">我的收藏</div>
+                <div class="topact-item layout-around-center">
+                    <img src="./img/shopping-cart.png" alt="">
+                    <span>购物车 (0)</span>
+                </div>
+            </div>
+        </div>
+        <!-- 导航栏 -->
+        <div class="nav-container">
+            <div class="nav-content common-content layout-justify-between">
+                <div class="left layout-flex">
+                    <img src="./img/logo.png" alt="">
+                    <div class="nav layout-flex">
+                        <a href="./html/index.html" class="nav-item nav-active">首页</a>
+                        <a class="nav-item">全部商品</a>
+                        <a class="nav-item">关于我们</a>
+                    </div>
+                </div>
+                <div class="right">
+                    <input type="text" placeholder="请输入搜索内容">
+                    <div class="search">
+                        <img src="./img/view.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 轮播图 -->
+        <div class="banner-container">
+            <div class="banner-content common-content">
+                <div class="img-train layout-flex">
+                    <!-- <img src="" alt="">
+                    <img src="" alt="">
+                    <img src="" alt="">
+                    <img src="" alt=""> -->
+                </div>
+                <div class="dot layout-justify-between">
+                </div>
+                <div class="arrow">
+                    <div class="arrow-left">&lt;</div>
+                    <div class="arrow-right">&gt;</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 商品内容 -->
+        <div class="product-container">
+            <div class="product-content common-content">
+                <!-- 手机 -->
+                <div class="concrete-product cellphone-product common-content">
+                    <div class="product-top layout-justify-between">
+                        <div class="title">手机</div>
+                        <div class="content-switch">
+                            <a href="#" class="switch-active">热门</a>
+                            <a href="#">电影影音</a>
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        <div class="product-left layout-column-center">
+                            <!-- <img src="./img/Rectangle 146.png" alt="" class="big-img"> -->
+                            <!-- <img src="./img/Rectangle 154.png" alt="" class="normal-img">
+                            <img src="./img/Rectangle 155.png" alt="" class="normal-img"> -->
+                        </div>
+                        <div class="product-right">
+                            <!-- <div class="product-item">
+                                <div class="product-img">
+                                    <img src="./img/Rectangle 138 (1).png" alt="">
+                                </div>
+                                <div class="product-name">Redmi K30</div>
+                                <div class="product-introduce">120Hz流速屏，全速热爱</div>
+                                <div class="price">
+                                    <span>1599元</span>
+                                    <span>2000元</span>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                <div class="product-img">
+                                    <img src="./img/Rectangle 138 (2).png" alt="">
+                                </div>
+                                <div class="product-name">Redmi K30 5G</div>
+                                <div class="product-introduce">双模5G，120Hz流速屏</div>
+                                <div class="price">
+                                    <span>2599元</span>
+                                    <span style="display: none;">2599元</span>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                <div class="product-img">
+                                    <img src="./img/Rectangle 138 (3).png" alt="">
+                                </div>
+                                <div class="product-name">小米CC9 Pro</div>
+                                <div class="product-introduce">1亿像素，五摄四闪</div>
+                                <div class="price">
+                                    <span>2599元</span>
+                                    <span>2799元</span>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                <div class="product-img">
+                                    <img src="./img/Rectangle 138 (4).png" alt="">
+                                </div>
+                                <div class="product-name">Redmi 8</div>
+                                <div class="product-introduce">5000mAh超长续航</div>
+                                <div class="price">
+                                    <span>699元</span>
+                                    <span>799元</span>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                <div class="product-img">
+                                    <img src="./img/Rectangle 138.png" alt="">
+                                </div>
+                                <div class="product-name">Redmi 8A</div>
+                                <div class="product-introduce">5000mAh超长续航</div>
+                                <div class="price">
+                                    <span>699元</span>
+                                    <span>799元</span>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                <div class="product-img">
+                                    <img src="./img/Rectangle 138 (5).png" alt="">
+                                </div>
+                                <div class="product-name">Redmi Note8 Pro</div>
+                                <div class="product-introduce">6400万全场景四摄</div>
+                                <div class="price">
+                                    <span>699元</span>
+                                    <span>799元</span>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                <div class="product-img">
+                                    <img src="./img/Rectangle 138 (6).png" alt="">
+                                </div>
+                                <div class="product-name">Redmi Note8</div>
+                                <div class="product-introduce">千元4800万四摄</div>
+                                <div class="price">
+                                    <span>699元</span>
+                                    <span style="display: none;">799元</span>
+                                </div>
+                            </div> -->
+                            <!-- <div class="product-item">
+                                浏览更多>>
+                            </div> -->
+
+                        </div>
+                    </div>
+                </div>
+                <!-- 家电 -->
+                <div class="concrete-product household-product common-content">
+                    <div class="product-top layout-justify-between">
+                        <div class="title">家电</div>
+                        <div class="content-switch">
+                            <a href="#" class="switch-active">热门</a>
+                            <a href="#">电影影音</a>
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        <div class="product-left layout-column-center">
+                            <!-- <img src="./img/Rectangle 146.png" alt="" class="big-img"> -->
+                            <!-- <img src="./img/Rectangle 154.png" alt="" class="normal-img">
+                            <img src="./img/Rectangle 155.png" alt="" class="normal-img"> -->
+                        </div>
+                        <div class="product-right">
+                        </div>
+                    </div>
+                </div>
+                <div class="concrete-product attachment-product common-content">
+                    <div class="product-top layout-justify-between">
+                        <div class="title">peijian</div>
+                        <div class="content-switch">
+                            <a href="#" class="switch-active">热门</a>
+                            <a href="#">保护套</a>
+                            <a href="#">充电器</a>
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        <div class="product-left layout-column-center">
+                            <!-- <img src="./img/Rectangle 146.png" alt="" class="big-img"> -->
+                            <!-- <img src="./img/Rectangle 154.png" alt="" class="normal-img">
+                            <img src="./img/Rectangle 155.png" alt="" class="normal-img"> -->
+                        </div>
+                        <div class="product-right">
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="household-product common-content">
+                    <div class="product-top layout-justify-between">
+                        <div class="title">家电</div>
+                        <div class="content-switch">
+                            <a href="#" class="switch-active">热门</a>
+                            <a href="#">电影影音</a>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <div class="product-left">
+                            <img src="./img/Rectangle 154.png" alt="">
+                            <img src="./img/Rectangle 155.png" alt="">
+                        </div>
+                        <div class="product-right">
+                            <div class="product-item">
+                                <div class="product-img">
+                                    <img src="./img/household0.png" alt="">
+                                </div>
+                                <div class="product-name">米家互联网空调C1（一级能效）</div>
+                                <div class="product-introduce">变频节能省电，自清洁</div>
+                                <div class="price">
+                                    <span>2599元</span>
+                                    <span>2600元</span>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                <div class="product-img">
+                                    <img src="./img/household1.png" alt="">
+                                </div>
+                                <div class="product-name">米家空调</div>
+                                <div class="product-introduce">出众静音，快速制冷热</div>
+                                <div class="price">
+                                    <span>1699元</span>
+                                    <span style="display: none;">1799元</span>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                <div class="product-img">
+                                    <img src="./img/household2.png" alt="">
+                                </div>
+                                <div class="product-name">米家互联网洗烘一体机 Pro 10kg</div>
+                                <div class="product-introduce">智能洗烘，省心省力</div>
+                                <div class="price">
+                                    <span>2999元</span>
+                                    <span style="display: none;">2999元</span>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                <div class="product-img">
+                                    <img src="./img/household3.png" alt="">
+                                </div>
+                                <div class="product-name">小米电视4A 32英寸</div>
+                                <div class="product-introduce">人工智能系统，高清液晶屏</div>
+                                <div class="price">
+                                    <span>799元</span>
+                                    <span style="display: none;">799元</span>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                <div class="product-img">
+                                    <img src="./img/household4.png" alt="">
+                                </div>
+                                <div class="product-name">小米全面屏电视E55A</div>
+                                <div class="product-introduce">全面屏设计，人工智能语音</div>
+                                <div class="price">
+                                    <span>1899元</span>
+                                    <span>2099元</span>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                <div class="product-img">
+                                    <img src="./img/household5.png" alt="">
+                                </div>
+                                <div class="product-name">小米全面屏电视E65A</div>
+                                <div class="product-introduce">全面屏设计，人工智能语音</div>
+                                <div class="price">
+                                    <span>2799元</span>
+                                    <span>3999元</span>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                <div class="product-img">
+                                    <img src="./img/household6.png" alt="">
+                                </div>
+                                <div class="product-name">小米电视4X 43英寸</div>
+                                <div class="product-introduce">FHD全高清屏，人工智能语音</div>
+                                <div class="price">
+                                    <span>1299元</span>
+                                    <span>1499元</span>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                浏览更多>>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div> -->
+                <!-- 配件 -->
+                <!-- <div class="attachment-product common-content">
+                    <div class="product-top layout-justify-between">
+                        <div class="title">配件</div>
+                        <div class="content-switch">
+                            <a href="#" class="switch-active">热门</a>
+                            <a href="#">保护套</a>
+                            <a href="#">充电器</a>
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        <div class="product-left">
+                            <img src="./img/attachmentLeft0.png" alt="">
+                            <img src="./img/attachmentLeft1.png" alt="">
+                        </div>
+                        <div class="product-right">
+                            <div class="product-item">
+                                <div class="product-img">
+                                    <img src="./img/attachment0.png" alt="">
+                                </div>
+                                <div class="product-name">Redmi K30/K20 Pro 怪力魔王...</div>
+                                <div class="product-introduce">怪力魔王专属定制</div>
+                                <div class="price">
+                                    <span>39元</span>
+                                    <span style="display: none;">2000元</span>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                <div class="product-img">
+                                    <img src="./img/attachment1.png" alt="">
+                                </div>
+                                <div class="product-name">小米CC9&小米美图定制版...</div>
+                                <div class="product-introduce">高清透亮，耐磨性强</div>
+                                <div class="price">
+                                    <span>39元</span>
+                                    <span>49元</span>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                <div class="product-img">
+                                    <img src="./img/attachment2.png" alt="">
+                                </div>
+                                <div class="product-name">小米CC9 标准搞头贴膜</div>
+                                <div class="product-introduce">高清透亮，耐磨性强</div>
+                                <div class="price">
+                                    <span>19元</span>
+                                    <span style="display: none;">2799元</span>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                <div class="product-img">
+                                    <img src="./img/attachment3.png" alt="">
+                                </div>
+                                <div class="product-name">小米USB充电器30W快充版(1A...</div>
+                                <div class="product-introduce">多一种接口，多一种选择</div>
+                                <div class="price">
+                                    <span>59元</span>
+                                    <span style="display: none;">59元</span>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                <div class="product-img">
+                                    <img src="./img/attachment4.png" alt="">
+                                </div>
+                                <div class="product-name">小米USB充电器快充版(18W)</div>
+                                <div class="product-introduce">安卓、苹果设备均可使用</div>
+                                <div class="price">
+                                    <span>29元</span>
+                                    <span style="display: none;">29元</span>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                <div class="product-img">
+                                    <img src="./img/attachment5.png" alt="">
+                                </div>
+                                <div class="product-name">小米无线充电宝青春版10000mAh</div>
+                                <div class="product-introduce">能量满满，无线有线都能充</div>
+                                <div class="price">
+                                    <span>129元</span>
+                                    <span style="display: none;">129元</span>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                <div class="product-img">
+                                    <img src="./img/attachment6.png" alt="">
+                                </div>
+                                <div class="product-name">Redmi Note8</div>
+                                <div class="product-introduce">千元4800万四摄</div>
+                                <div class="price">
+                                    <span>699元</span>
+                                    <span style="display: none;">799元</span>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                浏览更多>>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div> -->
+
+            </div>
+        </div>
+        <!-- 通用底部 -->
+        <div class="site-footer-container">
+            <div class="site-footer-content">
+                <div class="quality layout-justify-between">
+                    <div class="quality-item layout-align-center">
+                        <img src="./img/安全盾icon.png" alt="">
+                        <span>7天无理由退换货</span>
+                    </div>
+                    <div class="quality-item layout-align-center">
+                        <img src="./img/安全盾icon.png" alt="">
+                        <span>满99元全场免邮</span>
+                    </div>
+                    <div class="quality-item layout-align-center">
+                        <img src="./img/安全盾icon.png" alt="">
+                        <span>100%品质保证</span>
+                    </div>
+                </div>
+                <div class="logo">
+                    <div class="head"></div>
+                    <div class="left-ear"></div>
+                    <div class="right-ear"></div>
+                    <div class="body"></div>
+                    <div class="tail"></div>
+                </div>
+                <div class="page">首页&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;全部商品&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;关于我们
+                </div>
+                <div class="copyright">
+                    <span>商城版权所有 © 2012-2021 </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+
+</html>

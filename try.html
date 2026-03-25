@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./utils/jquery-3.7.1.js"></script>
+    <script src="./js/tryApi.js"></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+</body>
+<script>
+    var content = '<p><video src="http://localhost:8087/foodserver/upload/04af66b5-6051-4ad7-b4cb-f02a68b2aceecfd7fc0cfefc62fdfc68d128909e6dc4.mp4" controls="controls" style="max-width:100%"></video></p>'
+    var data = []
+// 图片视频
+var imgReg = /(<img|<video).*?(?:>|\/>)/gi
+// 匹配src属性
+var srcReg = /src=[\'\"]?([^\'\"]*)[\'\"]?/i
+var arr = content.match(imgReg)
+// 避免富文本中无src时报错
+if (arr) {
+    for (var i = 0; i < arr.length; i++) {
+         var src = arr[i].match(srcReg)
+         // 获取图片地址
+          if (src[1]) {
+            // console.log('已匹配的地址' + (i + 1) + '：' + src[1])
+            data.push(this.escape2Html(src[1]))
+          }
+        }
+      }
+console.log(data);
+    // $(function(){
+    //     renderBanner()
+    // })
+    // // 开发环境，测试环境，正式环境
+    // // var BASE_URL = "http://www.codeedu.com.cn/"
+
+
+    
+    // // 首页热门商品，渲染
+    // function renderBanner(){
+    //     baseAjax("get","/xiaomi/v1/product/hot",{},function(res){
+    //         console.log("我是试着，我把从api获取的数据取回来了",res);
+    //     }) 
+    //     // 渲染，自动轮播，点击
+    // }
+
+    // $.ajax({
+    //     type: "get",
+    //     url: `${BASE_URL}/xiaomi/v1/product/hot`,
+    //     async: true,
+    //     headers: {
+    //         "Content-type": "application/x-www-form-urlencoded"
+    //     },
+    //     data: {},
+    //     dataType: "json",
+    //     success: function (res) {
+    //         console.log(res);
+    //     },
+    //     error: function (err) {
+    //         console.log(err);
+    //     }
+
+    // })
+
+    // 登录，额外的操作：弹窗
+
+    // baseAjax("post","/xiaomi/v1/ms/user/login",{
+    //         "password": "y123123",
+    //         "username": "y123123"
+    //     })
+    
+
+
+        // baseAjax("post","/xiaomi/v1/ms/user/login",{
+        //     "password": "y123123",
+        //     "username": "y123123"
+        // })
+
+
+
+
+
+    // $.ajax({
+    //     type: "post",
+    //     url: `${BASE_URL}/xiaomi/v1/ms/user/login`,
+    //     async: true,
+    //     headers: {
+    //         "Content-type": "application/json"
+    //     },
+        // data: JSON.stringify({
+        //     "password": "y123123",
+        //     "username": "y123123"
+        // })
+    //     ,
+    //     dataType: "json",
+    //     success: function (res) {
+    //         console.log(res);
+    //     },
+    //     error: function (err) {
+    //         console.log(err);
+    //     }
+    // })
+
+
+
+
+
+
+
+
+
+
+    // baseAjax("post","/xiaomi/v1/ms/user/login",{
+    //     "password":"y123123",
+    //     "username":"y123123"
+    // })
+
+
+
+    // var base = "http://www.codeedu.com.cn/"
+    //   通过ajax与服务器进行数据交互
+    // 1、post请求
+    // var data = {
+    //     "password": "y123123",
+    //     "username": "y123123"
+    // }
+    // $.ajax({
+    //     type: "post",
+    //     url: `${base}/xiaomi/v1/ms/user/login`,
+    //     async: "true",
+    //     headers: {
+    //         "Content-type": "application/json"
+    //     },
+    //     data: JSON.stringify(data)
+    //     ,
+    //     dataType: "json",
+    //     success: function (res) {
+    //         console.log(res);
+    //     },
+    //     error: function (err) {
+    //         console.log(err);
+    //     }
+    // })
+
+    // baseAjax("get","/xiaomi/v1/product/hot",{},function(res){
+    //     console.log("我是callback，我从api那里拿到了数据：",res);
+    // })
+    // data = {
+    // }
+    // if(Object.values(data).length>0){
+    //     data = JSON.stringify(data)
+    // }
+    // // 2、get请求
+    // $.ajax({
+    //     type:"get",
+    //     url:`${base}/xiaomi/v1/product/hot`,
+    //     async:"true",
+    //     headers:{
+    //         "Content-type":"application/x-www-form-urlencoded"
+    //     },
+    //     data:data,
+    //     dataType:"json",
+    //     success: function (res) {
+    //         console.log(res);
+    //     },
+    //     error: function (err) {
+    //         console.log(err);
+    //     }
+    // })
+
+</script>
+
+</html>
