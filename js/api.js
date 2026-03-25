@@ -1,12 +1,21 @@
 // 全局的前缀
-var BASE_URL = "http://www.codeedu.com.cn"
+// var BASE_URL = "http://www.codeedu.com.cn"
+// 如果是在本地运行（127.0.0.1），直接请求原接口
+// 如果是在 Vercel 运行（域名包含 vercel.app），则请求 /api 代理
+var BASE_URL = window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost'
+               ? "http://www.codeedu.com.cn" 
+               : "/api";
 function baseAjax(type, url, data, callback,isToken) {
     var contentType = type == "GET" ? "application/x-www-form-urlencoded" : "application/json"
     // 判断token
     var headers = isToken?{Authorization:$.cookie("xiaomi-token")}:""
     // 判断是否有账号密码
-    if(Object.values(data).length>0){
-        data = JSON.stringify(data)
+    // if(Object.values(data).length>0){
+    //     data = JSON.stringify(data)
+    // }
+    // 如果是 POST 并且 有数据，才封箱（转字符串）
+    if (type.toUpperCase() !== "GET" && data && typeof data === 'object') {
+        requestData = JSON.stringify(data);
     }
     $.ajax({
         type: type,
